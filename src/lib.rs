@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 
 #[cfg(test)]
 mod tests {
@@ -9,8 +8,7 @@ mod tests {
 }
 
 
-pub trait PublicEvent<'de> {
-    fn from_obj(obj: impl Deserialize<'de> + Serialize) -> Self;
+pub trait PublicEvent {
     fn from_json(event_type: &str, json: &str) -> Self;
     fn stream_name(&self) -> &'static str;
     fn get_json(&self) -> Result<(&'static str, String),&str>;
